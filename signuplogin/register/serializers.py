@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User,admin_reg,relative
+from .models import User,admin_reg
 from django.contrib import auth
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
@@ -7,7 +7,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import smart_str, force_str, smart_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.db.models import fields
-
+from .models import Review
 from django.contrib.auth import get_user_model
 from django.conf import settings
 #User = get_user_model()
@@ -85,10 +85,10 @@ class admindata(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class relativedata(serializers.ModelSerializer):
-    class Meta:
-        model = relative
-        fields = '__all__'
+# class relativedata(serializers.ModelSerializer):
+#     class Meta:
+#         model = relative
+#         fields = '__all__'
 
 class LogoutSerializer(serializers.Serializer):
     refresh = serializers.CharField()
@@ -110,3 +110,7 @@ class LogoutSerializer(serializers.Serializer):
             self.fail('bad_token')
 
     
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Review
+        fields="__all__"

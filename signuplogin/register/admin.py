@@ -10,4 +10,4 @@ class UserAdmin(admin.ModelAdmin):
 
 admin.site.register(User, UserAdmin)
 admin.site.register(admin_reg)
-admin.site.register(relative)
+admin.site.register(Review)

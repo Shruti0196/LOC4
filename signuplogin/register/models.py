@@ -62,19 +62,24 @@ class admin_reg(models.Model):
     password = models.CharField(max_length=255)
     def __Str__(self):
         return self.username
-class relative(models.Model):
-    email= models.EmailField(max_length=255,unique=True)
-    name= models.CharField(max_length=255,default='')
-    username = models.CharField(max_length=255,unique=True)
-    password = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255,default='')
-    document = models.FileField(default='')
-    def __Str__(self):
-        return self.name
-    def tokens(self):
-        refresh = RefreshToken.for_user(self)
-        return {
-            'refresh': str(refresh),
-            'access': str(refresh.access_token)
-        }
+# class relative(models.Model):
+#     email= models.EmailField(max_length=255,unique=True)
+#     name= models.CharField(max_length=255,default='')
+#     username = models.CharField(max_length=255,unique=True)
+#     password = models.CharField(max_length=255)
+#     phone = models.CharField(max_length=255,default='')
+#     document = models.FileField(default='')
+#     def __Str__(self):
+#         return self.name
+#     def tokens(self):
+#         refresh = RefreshToken.for_user(self)
+#         return {
+#             'refresh': str(refresh),
+#             'access': str(refresh.access_token)
+#         }
+
+
+class Review(models.Model):
+    username=models.CharField(max_length=25)
+    text=models.TextField(max_length=1000)
 
